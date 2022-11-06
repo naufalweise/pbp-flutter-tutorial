@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -53,7 +55,9 @@ class _CounterPageState extends State<CounterPage> {
 
 
   void _decrementCounter() {
-    setState(() => _counter--);
+    setState(() => {
+      _counter = max(0, _counter - 1)
+    });
   }
 
   @override
