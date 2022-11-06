@@ -1,16 +1,15 @@
-# test_flutter_1
+# Tugas Flutter PBP
 
-A new Flutter project.
+Repo untuk tugas flutter PBP.
 
-## Getting Started
+## Tugas 7
 
-This project is a starting point for a Flutter application.
+### Stateful vs Stateless Widget
+State adalah data atau informasi yang dapat berubah dan dapat dibaca secara sinkronus saat widget di build.
+Stateful widget adalah widget yang statenya bisa diubah setelah widget tersebut di build.
+Stateless widget adalah widget yang statenya tidak bisa diubah setelah widget tersebut di build.
+Berikut adalah perbedaannya:
+- Stateful widget bersifat dinamis, isinya dapat berubah. Sementara, stateless widget tidak dapat berubah
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
