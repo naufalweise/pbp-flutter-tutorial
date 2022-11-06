@@ -67,7 +67,7 @@ class _CounterPageState extends State<CounterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              _counter.isOdd ? "Ganjil" : "Genap",
+              _counter.isOdd ? "GANJIL" : "GENAP",
               style: TextStyle(color: _counter.isOdd ? Colors.blue : Colors.red),
             ),
             Text(
@@ -80,7 +80,8 @@ class _CounterPageState extends State<CounterPage> {
           ],
         ),
       ),
-      floatingActionButton: Stack(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(padding: const EdgeInsets.all(20.0), child: Stack(
         children: <Widget>[
           Align(
               alignment: Alignment.bottomLeft,
@@ -99,6 +100,7 @@ class _CounterPageState extends State<CounterPage> {
             ),
           )
         ],
+      )
       )
     );
   }
