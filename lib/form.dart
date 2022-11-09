@@ -18,9 +18,21 @@ class _MyFormPageState extends State<MyFormPage> {
   double umur = 0;
   String kelasPBP = 'A';
   List<String> listKelasPBP = ['A', 'B', 'C', 'D', 'E', 'F', 'KI'];
+  bool _nilaiSwitch = false;
 
   @override
   Widget build(BuildContext context) {
+    String jenjang = 'Tidak ada';
+    if (jenjangSarjana) {
+      jenjang = 'Sarjana';
+    } else if (jenjangDiploma) {
+      jenjang = 'Diploma';
+    } else if (jenjangMagister) {
+      jenjang = 'Magister';
+    } else if (jenjangDoktor) {
+      jenjang = 'Doktor';
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Form'),
@@ -31,7 +43,8 @@ class _MyFormPageState extends State<MyFormPage> {
           child: Container(
             padding: const EdgeInsets.all(20.0),
             child: Column(
-              children: [Padding(
+              children: [
+                Padding(
                 // Menggunakan padding sebesar 8 pixels
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -147,6 +160,84 @@ class _MyFormPageState extends State<MyFormPage> {
                         umur = value;
                       });
                     },
+                  ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.class_),
+                  title: const Text(
+                    'Kelas PBP',
+                  ),
+                  trailing: DropdownButton(
+                    value: kelasPBP,
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    items: listKelasPBP.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        kelasPBP = newValue!;
+                      });
+                    },
+                  ),
+                ),
+                SwitchListTile(
+                  title: const Text('Practice Mode'),
+                  value: _nilaiSwitch,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _nilaiSwitch = value;
+                    });
+                  },
+                  secondary: const Icon(Icons.run_circle_outlined),
+                ),
+                TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Dialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            elevation: 15,
+                            child: Container(
+                              child: ListView(
+                                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                                shrinkWrap: true,
+                                children: <Widget>[
+                                  const Center(child: Text('Informasi Data')),
+                                  Column(children: [
+                                    Text('Nama: $_namaLengkap'),
+                                    Text('Jenjang: $jenjang'),
+                                    Text('Umur: $umur'),
+                                    Text('Kelas PBP: $kelasPBP'),
+                                    Text('Mode latihan: $_nilaiSwitch')
+                                  ],),
+                                  const SizedBox(height: 20),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('Kembali'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: const Text(
+                    "Simpan",
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],
