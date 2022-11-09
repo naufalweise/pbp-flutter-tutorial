@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_flutter_1/main.dart';
+import 'package:test_flutter_1/nav.dart';
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
@@ -37,6 +38,7 @@ class _MyFormPageState extends State<MyFormPage> {
       appBar: AppBar(
         title: const Text('Form'),
       ),
+      drawer: const MainDrawer(currentPage: 'FORM',),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
