@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:test_flutter_1/main.dart';
 import 'package:test_flutter_1/page/form.dart';
 
+import '../page/to_do_page.dart';
+
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.currentPage});
 
@@ -41,6 +43,16 @@ class MainDrawer extends StatelessWidget {
                );
               }
 
+            },
+          ),
+          ListTile(
+            title: const Text('To Do'),
+            onTap: () {
+              // Route menu ke halaman to do
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const ToDoPage()),
+              );
             },
           ),
         ],
