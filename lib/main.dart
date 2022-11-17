@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_flutter_1/form.dart';
-import 'package:test_flutter_1/nav.dart';
+import 'package:test_flutter_1/page/form.dart';
+import 'package:test_flutter_1/menu/nav.dart';
 
 void main() {
   runApp(const MyApp());
